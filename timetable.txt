@@ -1,0 +1,22 @@
+create table tt
+(
+  day varchar(30),
+  ssn int,
+  faculty varchar(30),
+  sem int,
+  room int,
+  sub varchar(30),
+  constraint c primary key(faculty,room,day,ssn,sem,sub),
+  unique(day,ssn,sem),
+  unique(day,ssn,faculty),
+  unique(day,ssn,room)
+);
+
+
+insert into tt values('mon','1','jon','7','1','java');
+insert into tt values('mon','1','jon','5','2','testing');
+insert into tt values('mon','1','cena','7','3','dbms');
+insert into tt values('mon','1','rock','4','1','ds');
+insert into tt values('mon','1','jon','7','1','java');
+insert into tt values('tue','1','jon','7','1','java');
+insert into tt values('mon','2','jon','7','1','java');
