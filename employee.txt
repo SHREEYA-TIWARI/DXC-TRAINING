@@ -1,0 +1,50 @@
+create table employee
+(
+  empfname varchar(50),
+  empmname varchar(50),
+  emplname varchar(50),
+  empage int check(empage between 0 and 49),
+  empcity varchar(50) check(empcity like 'B%'),
+  empdesignation varchar(50) check(empdesignation like '% manager'),
+  empid int check(empid like '_____'),
+  empdob DATE
+);
+
+
+insert into employee values('A','b','c','20','Bijapur','sales manager','11111',to_date(20061999,'dd/mm/yyyy'));
+insert into employee values('d','e','f','20','Belgavi','account manager','11112',to_date(20061998,'dd/mm/yyyy'));
+insert into employee values('g','h','i','20','Bangalore','sales manager','11113',to_date(20061990,'dd/mm/yyyy'));
+insert into employee values('j','k','l','20','Bijapur','account manager','11114',to_date(20061997,'dd/mm/yyyy'));
+insert into employee values('m','n','o','20','Bijapur','sales manager','11115',to_date(20061994,'dd/mm/yyyy'));
+
+
+update employee set empcity='Belgium' where empfname='A';
+
+delete from employee where empid='11114';
+
+commit;
+
+delete employee;
+
+rollback;
+
+select empname, dob from employee;
+
+select substr(empfname,1,1) || '.'||substr(empname,1,1)||'  '||emplname from employee;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
