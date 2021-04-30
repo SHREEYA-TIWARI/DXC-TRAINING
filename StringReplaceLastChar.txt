@@ -1,0 +1,29 @@
+public class mfp {
+
+String myReplace(String data,char find,char replace)
+{
+char[] ar= data.toCharArray();
+o:
+for(int i=0;i<ar.length;i++)
+{
+
+if(ar[ar.length-i-1]==find) {
+ar[ar.length-i-1]=replace;
+break o;
+}
+}
+
+String val=new String(ar);
+return  val;
+}
+
+public static void main(String[] args) {
+
+String test="Hello ";
+
+mfp m=new mfp();
+String res= m.myReplace(test, 'l', 'Y');
+System.out.println(res);
+}
+}
+
