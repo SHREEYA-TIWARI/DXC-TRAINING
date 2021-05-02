@@ -1,0 +1,40 @@
+public class mfp{
+	boolean isEqual(String str1 , String str2)
+	{
+		int cnt=0;
+		char[] ar1= str1.toCharArray();
+		     char[] ar2=str2.toCharArray();
+		
+		
+		if(str1.length()==str2.length())
+		{
+			for(int i=0;i<ar1.length;i++)
+			{
+				if(ar1[i]>='A'&&ar1[i]<='Z')
+					ar1[i]=(char)(ar1[i]+32);
+				if(ar2[i]>='A'&&ar2[i]<='Z')
+					ar2[i]=(char)(ar2[i]+32);
+			}
+			for(int i=0;i<ar1.length;i++)
+			{	
+				if(ar1[i]!=ar2[i])
+				{
+					cnt=0;
+					break;
+				}
+				else
+					cnt=1;
+			}
+		}
+		if(cnt==1)
+			return true;
+		else
+			return false;	
+	}
+	public static void main(String[] args) {
+		mfp obj=new mfp();
+		String s1="Hello",s2="HELLO";
+		System.out.println(obj.isEqual(s1,s2));
+	}
+
+	}
