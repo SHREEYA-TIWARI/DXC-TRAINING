@@ -1,0 +1,24 @@
+public class mfp{
+		String hasNumber(String data){
+			char[] ar= data.toCharArray();
+			int k=0;
+			for(int i=0;i<ar.length;i++)
+			{
+				if(ar[i]>='0'&&ar[i]<='9')
+				{
+					k=1;
+					break;
+				}
+			}
+			if(k==1)
+				return "Yes";
+			else
+				return "No";
+		}
+	public static void main(String[] args) {
+		String str="hello@123";
+
+		mfp obj=new mfp();
+        System.out.println(obj.hasNumber(str));
+	}
+	}
