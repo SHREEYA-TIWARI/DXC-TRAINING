@@ -1,0 +1,131 @@
+Car Class
+
+
+package day8Task;
+
+public class Car {
+	private String carBrand;
+	private String OwnerName;
+	public String getCarBrand() {
+		return carBrand;
+	}
+	public void setCarBrand(String carBrand) {
+		this.carBrand = carBrand;
+	}
+	public String getOwnerName() {
+		return OwnerName;
+	}
+	public void setOwnerName(String ownerName) {
+		OwnerName = ownerName;
+	}
+	@Override
+	public String toString() {
+		return "Car [carBrand=" + carBrand + ", OwnerName=" + OwnerName + "]";
+	}
+	public Car(String carBrand, String ownerName) {
+		//super();
+		this.carBrand = carBrand;
+		this.OwnerName = ownerName;
+	}
+	
+	
+	
+	
+
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+
+Showrooom class
+
+
+package day8Task;
+import java.util.ArrayList;
+public class ShowRoom {
+	private String ShowroomName;
+	
+	 ArrayList<Car> carlist=new ArrayList<>() ;
+	
+	public String getShowroomName() {
+		return ShowroomName;
+	}
+	public void setShowroomName(String showroomName) {
+		ShowroomName = showroomName;
+	}
+	
+	
+	public ShowRoom(String showroomName, ArrayList<Car> carlist) {
+		super();
+		ShowroomName = showroomName;
+		this.carlist = carlist;
+	}
+	@Override
+	public String toString() {
+		return "ShowRoom [ShowroomName=" + ShowroomName + ", a1=" +carlist + "]";
+	}
+	public ShowRoom(String showroomName) {
+		//super();
+		ShowroomName = showroomName;
+		//this.carlist = carlist;
+	}
+	
+	
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Main method
+
+package day8Task;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collector;
+
+@SuppressWarnings("unused")
+public class Testing {
+	@SuppressWarnings("unchecked")
+	public static void main(String[] args) {
+		Car c=new Car("Lamborghini","xyz");
+		Car c1=new Car("Rolls royce","def");
+		Car c2=new Car("Buggati","opq");
+		Car c3=new Car("Ferrari","uvw");
+        ArrayList<Car> carlist=new ArrayList<>() ;
+		 carlist.add(c1);
+		 carlist.add(c2);
+		 carlist.add(c3);
+		 carlist.add(c);
+		 ShowRoom s1=new ShowRoom("xyz1",carlist);
+		 //System.out.println(s1);
+		 
+		 
+		 Car c5=new Car("Toyota","xyz");
+			Car c6=new Car("BMW","def");
+			Car c7=new Car("Audi","opq");
+			Car c8=new Car("Mercedez","uvw");
+			ArrayList<Car> carlist1=new ArrayList<>() ;
+			 carlist1.add( c5);
+			 carlist1.add( c6);
+			 carlist1.add( c7);
+			 carlist1.add( c8);
+			 ShowRoom s2=new ShowRoom("Hyndai Motors",carlist1);
+			// System.out.println(s2);
+			 
+			 
+		 @SuppressWarnings("rawtypes")
+		Map map=new HashMap();  
+		map.put(s1,carlist1);  
+		map.put(s2,carlist);  
+			
+			  
+		 
+		 System.out.println(map.get(args));
+		 
+		 
+		 
+		 
+
+	}
+
+}
