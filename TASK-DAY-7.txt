@@ -1,0 +1,216 @@
+NUMBER
+
+
+package pkg3;
+
+public interface Number {
+	boolean PhoneNumberFormat(String Number);
+}
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*
+
+INDIA
+
+package pkg3;
+
+public class India extends Country {
+
+
+	public boolean PhoneNumberFormat(String Number) {
+	    char a[]=Number.toCharArray();
+	    int flag=0;
+	     if(a.length==14) {
+	    	 if(a[0]=='+' &&a[1]=='9'&&a[2]=='1'&&a[3]=='-') {
+	    	 for(int i=4;i<a.length;i++) {
+	    		 if(a[i]>='0' && a[i]<='9') {
+	    			 flag++;
+	    		 }
+	    	 }
+	     }
+	  }
+	     if(flag==10) 
+	     return true;
+	      else
+		return false;
+	}
+}
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*
+QATAR
+
+package pkg3;
+
+public class Qatar extends Country{
+	public boolean PhoneNumberFormat(String Number)
+	{
+		char ar[]=Number.toCharArray();
+		int f=0;
+		if(ar[0]=='+'&&ar[1]=='9'&&ar[2]=='7'&&ar[3]=='4'&&ar[4]==' '&&ar[5]=='3'&&ar[6]=='3')
+			for(int i=7;i<ar.length;i++)
+			{
+				if(i!=9)
+					if(ar[i]>='0'&&ar[i]<='9')
+							f++;
+					else
+						return false;
+				else
+					if(ar[i]=='-')
+						f++;
+			}
+		if(f==7)
+			return true;
+		else 
+			return false;
+	}
+}
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*
+Brazil
+package pkg3;
+
+public class Brazil extends Country{
+	public boolean PhoneNumberFormat(String Number)
+	{
+		char ar[]=Number.toCharArray();
+		int f=0;
+		if(ar[0]=='+'&&ar[1]=='5'&&ar[2]=='5'&&ar[3]==' '&&ar[4]=='1'&&ar[5]=='5'&&ar[6]==' ')
+			for(int i=7;i<ar.length;i++)
+			{
+				if(i!=12)
+					if(ar[i]>='0'&&ar[i]<='9')
+						f++;
+					else
+						return false;
+				else
+					if(ar[i]=='-')
+					f++;
+			}
+		if(f==10)
+			return true;
+		else 
+			return false;
+	}
+
+}
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*
+Norway.java
+package test;
+
+public class Norway extends Country{
+	public boolean PhoneNumberFormat(String Number)
+	{
+		char ar[]=Number.toCharArray();
+		int f=0;
+		if(ar[0]=='+'&&ar[1]=='4'&&ar[2]=='7'&&ar[3]=='-'&&ar[4]=='4')
+			for(int i=5;i<ar.length;i++)
+			{
+				if(i!=6&&i!=9&&i!=12)
+					if(ar[i]>='0'&&ar[i]<='9')
+						f++;
+					else
+						return false;
+				else 
+					if(ar[i]=='-')
+						f++;
+			}
+		if(f==10)
+			return true;
+		else 
+			return false;
+	}
+
+
+}
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*
+Turkey
+package pkg3;
+
+public class Turkey extends Country{
+	public boolean PhoneNumberFormat(String Number)
+	{
+		char ar[]=Number.toCharArray();
+		int f=0;
+		if(ar[0]=='+'&&ar[1]=='9'&&ar[2]=='0'&&ar[3]==' '&&ar[4]=='5'&&ar[5]=='0'&&ar[6]=='9'&&ar[7]=='-')
+		{
+			for(int i=8;i<ar.length;i++)
+			{
+				if(ar[i]>='0'&&ar[i]<='9')
+					f++;
+				else
+					return false;
+			}
+			if(f==6)
+				return true;
+			else 
+				return false;
+		}
+		else if(ar[0]=='0'&&ar[1]=='5'&&ar[2]=='0'&&ar[3]=='9'&&ar[4]=='-')
+		{
+			for(int i=5;i<ar.length;i++)
+			{
+				if(i!=8)
+					if(ar[i]>='0'&&ar[i]<='9')
+						f++;
+					else
+						return false;
+				else
+					if(ar[i]=='-')
+						f++;
+			}
+		if(f==7)
+			return true;
+		else 
+			return false;
+		}
+		return false;
+	}
+
+}
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*
+
+
+
+
+COUNTRY
+
+package pkg3;
+
+public abstract class Country implements Number{
+    
+}
+
+-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*--*-*-*-*-*-*-*-*-*-*
+
+
+
+
+MAIN
+
+package pkg3;
+
+public class MAIN {
+
+	public static void main(String[] args) {
+		 India i=new India();
+		 System.out.println(i.PhoneNumberFormat("+91-8971645169"));
+
+                                     Turkey t=new Turkey();
+                                    System.out.println(t.PhoneNumberFormat("+90 509-999999"));
+
+                                     Qatar q=new Qatar();
+                                    System.out.println(q.PhoneNumberFormat("+974 3399-9999"));
+
+	                  Norway n=new Norway();
+                                    System.out.println(n.PhoneNumberFormat("+47-49-99-99-99"));
+
+	                  Brazil b=new Brazil();
+                                    System.out.println(b.PhoneNumberFormat("+55 15 78945-5645"));
+	
+
+
+
+	
+	}
+
+}
+
