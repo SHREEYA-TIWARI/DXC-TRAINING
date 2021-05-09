@@ -1,0 +1,314 @@
+PLAYER_DAO
+
+package com.myproj.dao;
+	import java.sql.Connection;
+	import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+
+import com.myproj.util.Player_util;
+	import com.myproj.model.Player_model;
+
+    public class Player_dao {
+	public String savePlayer(Player_model player)
+	{
+	try {
+	String sql="insert into player values(?,?,?,?)";
+	Connection con= Player_util.dbConnect();
+	PreparedStatement stat=con.prepareStatement(sql);
+
+	stat.setString(1, player.getName());
+	stat.setString(2, player.getRole());
+	stat.setString(3, player.getStyle());
+	stat.setString(4, player.getTeam());
+	
+	int res= stat.executeUpdate();
+
+	if(res>0)
+	return "recs inserted";
+	}
+	catch(Exception e)
+	{
+	e.printStackTrace();
+	}
+	return "cannot insert recs";
+	}
+
+	public Player_model getPlayerByName(String name)
+	{
+
+	try {
+	Connection con= Player_util.dbConnect();
+	String sql="select * from player where name=?";
+	PreparedStatement stat=con.prepareStatement(sql);
+
+	stat.setString(1, name);
+	ResultSet rs= stat.executeQuery();
+
+	rs.next();
+
+	//String Name=rs.getString("name");
+	String role=rs.getString("role");
+	String style=rs.getString("style");
+	String team=rs.getString("team");
+	
+	
+
+	Player_model p=new Player_model(name,role,style,team);
+
+	return p;
+
+	}
+	catch (Exception e) {
+
+	e.printStackTrace();
+	}
+	return null;
+	}
+
+
+
+	public ArrayList<Player_model> getPlayers()
+	{
+
+	try {
+
+	Connection con= Player_util.dbConnect();
+
+	String sql="select * from player";
+	PreparedStatement stat=con.prepareStatement(sql);
+
+
+	ResultSet rs= stat.executeQuery();
+
+	ArrayList<Player_model> players=new ArrayList<>();
+
+	while(rs.next())
+	{
+
+
+		String Name=rs.getString("name");
+		String role=rs.getString("role");
+		String style=rs.getString("style");
+		String team=rs.getString("team");
+		
+
+	Player_model pp=new Player_model(Name, role,  style,  team);
+
+	players.add(pp);
+	}
+
+	return players;
+
+	}
+	catch (Exception e) {
+
+	e.printStackTrace();
+	}
+	return null;
+	}
+
+	//************************************************************************************
+    //************************************************************************************
+	public String deleteStudentById(String name)
+	{
+      try {
+    Connection con= Player_util.dbConnect();
+    String sql="delete from player where name=?";
+	PreparedStatement stat=con.prepareStatement(sql);
+
+	stat.setString(1, name);
+	int rs= stat.executeUpdate();
+
+	if(rs>0)
+	return "recs for id "+name +" deleted";
+	}
+	catch (Exception e) {
+
+	e.printStackTrace();
+	}
+	return null;
+	}
+
+//*****************************************************************************************
+//******************************************************************************************
+	
+	public String updatePlayer(Player_model player)
+	{
+
+	try {
+
+		Player_model studOld=getPlayerByName(player.getName());
+
+	Connection con= Player_util.dbConnect();
+
+	String sql="update player set role=?, style=?,team=? where name=?";
+	PreparedStatement stat=con.prepareStatement(sql);
+
+
+	if(player.getRole()==null)
+	player.setRole(studOld.getRole());
+
+	if(player.getStyle()==null)
+	player.setStyle(studOld.getStyle());
+
+	if(player.getTeam()==null)
+	player.setTeam(studOld.getTeam());
+
+
+	stat.setString(1,player.getRole() );
+	stat.setString(2, player.getStyle());
+	
+	stat.setString(3,player.getTeam() );
+	stat.setString(4, player.getName());
+
+	int rs= stat.executeUpdate();
+
+
+
+	if(rs>0) {
+
+	System.out.println(studOld);
+
+	System.out.println(player);
+
+	return "recs updated for id "+player.getName();
+	}
+	}
+	catch (Exception e) {
+
+	e.printStackTrace();
+	}
+	return null;
+	}
+
+
+
+
+	}
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PLAYER_MODEL
+
+
+package com.myproj.model;
+
+public class Player_model {
+	
+
+String Name;
+String role;
+String style;
+String team;
+
+public Player_model() {
+// TODO Auto-generated constructor stub
+}
+
+
+public String getName() {
+	return Name;
+}
+public void setName(String name) {
+	Name = name;
+}
+public String getRole() {
+	return role;
+}
+public void setRole(String role) {
+	this.role = role;
+}
+public String getStyle() {
+	return style;
+}public void setStyle(String style) {
+	this.style = style;
+}
+public String getTeam() {
+	return team;
+}
+public void setTeam(String team) {
+	this.team = team;
+}
+
+public Player_model(String name, String role, String style, String team) {
+	super();
+	Name = name;
+	this.role = role;
+	this.style = style;
+	this.team = team;
+}
+@Override
+public String toString() {
+	return "Player_model [Name=" + Name + ", role=" + role + ", style=" + style + ", team=" + team + "]";
+}
+public String saveStudent(Player_model student) {
+	// TODO Auto-generated method stub
+	return null;
+}
+}
+	
+	
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+PLAYER_SERVICE
+
+package com.myproj.service;
+
+		import java.util.ArrayList;
+
+import com.myproj.dao.Player_dao;
+		import com.myproj.model.Player_model;
+
+		public class Player_service {
+
+			public static void main(String[] args) {
+
+				
+				Player_dao dao=new Player_dao();
+		
+
+			Player_model studentUpdate=new Player_model();
+
+				studentUpdate.setName("abc");
+
+				studentUpdate.setTeam("RCB");
+
+				System.out.println(dao.updatePlayer(studentUpdate));
+
+
+			}		
+			
+			
+	}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PLAYER_UTIL
+
+package com.myproj.util;
+
+
+
+	import java.sql.Connection;
+	import java.sql.DriverManager;
+
+	public class Player_util {
+
+	public static Connection dbConnect()
+	{
+	try{
+	Class.forName("oracle.jdbc.OracleDriver");
+	Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe","shre","pass");
+	return con;
+	}
+	catch (Exception e) {
+	e.printStackTrace();
+	return null;
+	}
+	}
+	}
